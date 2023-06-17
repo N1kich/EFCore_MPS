@@ -27,9 +27,9 @@
                         Width="111"
                         Content="Найти МПЗ"
                         Margin="10,0,0,0"
-                        Click="SearchMPS_Click" Height="39"/>
+                         Height="39"/>
 
-                <Button Name="DisplayMPS" Height="39" Width="139" Style="{StaticResource ERP_Button}" Background="#FFB197FC" Margin="10,0,0,0" Click="DisplayMPS_Click">
+                <Button Name="DisplayMPS" Height="39" Width="139" Style="{StaticResource ERP_Button}" Background="#FFB197FC" Margin="10,0,0,0" >
                     <Button.Content>
                         <TextBlock Text="Отобразить все электронные карты" TextWrapping="WrapWithOverflow" FontFamily="ubuntu" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                     </Button.Content>
@@ -44,12 +44,12 @@
             <DataGrid Height="262" Margin="15" x:Name="RegisterMps_DataGrid" AutoGenerateColumns="True"/>
 
             <StackPanel Orientation="Vertical" Height="158">
-                <Button Name="CreateMPS" Height="52" Width="771" Style="{StaticResource ERP_Button}" Background="#FFB197FC" Margin="10" Click="CreateMps_Click">
+                <Button Name="CreateMPS" Height="52" Width="771" Style="{StaticResource ERP_Button}" Background="#FFB197FC" Margin="10">
                     <Button.Content>
                         <TextBlock Margin ="0,0,0,10" FontSize="24" Text="Создать электронную карту МПЗ" FontFamily="ubuntu" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                     </Button.Content>
                 </Button>
-                <Button Name="LoadToDb" Click="LoadToDb_Click" Height="52" Width="771" Style="{StaticResource ERP_Button}" Background="#FFB197FC">
+                <Button Name="LoadToDb" Height="52" Width="771" Style="{StaticResource ERP_Button}" Background="#FFB197FC">
                     <Button.Content>
                         <TextBlock Margin ="0,0,0,10" FontSize="24" Text="Сохранить электронную карту в БД" FontFamily="ubuntu" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                     </Button.Content>

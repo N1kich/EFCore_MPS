@@ -31,7 +31,8 @@
        
         <StackPanel Grid.Column="0" x:Name="NavigationMenu" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
 
-            <Button x:Name="RegisterMps_Button" Style="{StaticResource ERP_Button}" Background="#FFB197FC" Height="40" Margin="10" >
+            <Button x:Name="RegisterMps_Button" Style="{StaticResource ERP_Button}" Background="#FFB197FC" Height="40" Margin="10"
+                    Command="{Binding ContentNavigationCommand}">
                 <Button.Content>
                     <TextBlock Text="Зарегистрировать МПЗ" FontFamily="Cascadia Mono Semibold" FontSize="18" TextWrapping="WrapWithOverflow"
                                VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -62,13 +63,16 @@
         </StackPanel>
 
         <Border Grid.Row="0" Grid.Column="1" CornerRadius="20" Background="#FFB197FC">
-            <TextBox  Text="Контент" HorizontalAlignment="Center"
+            <Label x:Name="ContentHeader_Label" Content="Контент" HorizontalAlignment="Center"
                  VerticalAlignment="Center" FontFamily="Cascadia Mono" FontSize="24"
                       Background="#FFB197FC"/>
         </Border>
 
         <ScrollViewer Grid.Row="1" Grid.Column="1">
-            <Frame x:Name="Content_Frame" NavigationUIVisibility="Hidden" Background="#e9ecef" Margin="0,10,0,0" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" />
+            <Frame x:Name="Content_Frame" NavigationUIVisibility="Hidden"
+                   Source="{Binding ContentUri}"
+                   Background="#e9ecef" Margin="0,10,0,0" ScrollViewer.CanContentScroll="True"
+                   ScrollViewer.VerticalScrollBarVisibility="Auto" />
         </ScrollViewer>
         
 

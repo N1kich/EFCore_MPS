@@ -1,0 +1,60 @@
+﻿<Page x:Class="EFCore_MPS.View.RegisterMps"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EFCore_MPS.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="800"
+      Title="RegisterMps"
+      KeepAlive="True">
+
+    <Grid Background="#f1f3f5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="41*"/>
+            <RowDefinition Height="222*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Row="0">
+            <TextBlock  Text="Введите код МПЗ" FontFamily="ubuntu" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Foreground="#FFB197FC" FontSize="18"
+                        FontWeight="Bold" Height="30"
+                        />
+            <StackPanel Orientation="Horizontal" Height="51">
+                <TextBox Name="SearchMPS_Text" Width="524" FontFamily="Cascadia Mono Semibold" FontSize="18" Height="35"/>
+                <Button x:Name="SearchMPS"
+                        Background="#FFB197FC"
+                        Style="{StaticResource ERP_Button}"
+                        Width="111"
+                        Content="Найти МПЗ"
+                        Margin="10,0,0,0"
+                        Click="SearchMPS_Click" Height="39"/>
+
+                <Button Name="DisplayMPS" Height="39" Width="139" Style="{StaticResource ERP_Button}" Background="#FFB197FC" Margin="10,0,0,0" Click="DisplayMPS_Click">
+                    <Button.Content>
+                        <TextBlock Text="Отобразить все электронные карты" TextWrapping="WrapWithOverflow" FontFamily="ubuntu" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    </Button.Content>
+                </Button>
+
+            </StackPanel>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            
+            <DataGrid Height="262" Margin="15" x:Name="RegisterMps_DataGrid" AutoGenerateColumns="True"/>
+
+            <StackPanel Orientation="Vertical" Height="158">
+                <Button Name="CreateMPS" Height="52" Width="771" Style="{StaticResource ERP_Button}" Background="#FFB197FC" Margin="10" Click="CreateMps_Click">
+                    <Button.Content>
+                        <TextBlock Margin ="0,0,0,10" FontSize="24" Text="Создать электронную карту МПЗ" FontFamily="ubuntu" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    </Button.Content>
+                </Button>
+                <Button Name="LoadToDb" Click="LoadToDb_Click" Height="52" Width="771" Style="{StaticResource ERP_Button}" Background="#FFB197FC">
+                    <Button.Content>
+                        <TextBlock Margin ="0,0,0,10" FontSize="24" Text="Сохранить электронную карту в БД" FontFamily="ubuntu" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

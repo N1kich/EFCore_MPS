@@ -10,18 +10,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace EFCore_MPS.View
 {
     /// <summary>
-    /// Логика взаимодействия для CreateMpsWindow.xaml
+    /// Логика взаимодействия для CreateRegisterMps.xaml
     /// </summary>
-    public partial class CreateMpsWindow : Window
+    public partial class CreateRegisterMps : UserControl
     {
-        public CreateMpsWindow()
+        public CreateRegisterMps()
         {
             InitializeComponent();
+
         }
+
+
     }
 }

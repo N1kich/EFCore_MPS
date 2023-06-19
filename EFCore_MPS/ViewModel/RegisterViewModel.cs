@@ -9,6 +9,7 @@ namespace EFCore_MPS.ViewModel
 {
     class RegisterViewModel:ObservableObject
     {
+        RelayCommand<object> ShowRegisterMpsWindow;
         public RegisterViewModel()
         {
 

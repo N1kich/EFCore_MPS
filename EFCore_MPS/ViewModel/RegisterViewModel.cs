@@ -9,6 +9,9 @@ namespace EFCore_MPS.ViewModel
 {
     class RegisterViewModel:ObservableObject
     {
+        public RegisterViewModel()
+        {
 
+        }
     }
 }

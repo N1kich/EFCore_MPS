@@ -26,13 +26,14 @@
         <Border Grid.Row="0" Grid.Column="0" CornerRadius="20" Background="#FFB197FC">
             <Label  Content="Меню" FontFamily="Cascadia Mono" FontSize="24" 
                     HorizontalAlignment="Center" Width="68"
+                    VerticalAlignment="Center"
                     />
         </Border>
        
         <StackPanel Grid.Column="0" x:Name="NavigationMenu" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
 
             <Button x:Name="RegisterMps_Button" Style="{StaticResource ERP_Button}" Background="#FFB197FC" Height="40" Margin="10"
-                    Command="{Binding ContentNavigationCommand}">
+                    Command="{Binding ContentNavigationCommand}" CommandParameter="RegisterMpsPage">
                 <Button.Content>
                     <TextBlock Text="Зарегистрировать МПЗ" FontFamily="Cascadia Mono Semibold" FontSize="18" TextWrapping="WrapWithOverflow"
                                VerticalAlignment="Center" HorizontalAlignment="Center"/>

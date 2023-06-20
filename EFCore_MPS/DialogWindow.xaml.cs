@@ -19,9 +19,16 @@ namespace EFCore_MPS
     /// </summary>
     public partial class DialogWindow : Window
     {
+        protected object _objectToDbSave;
+        public object ObjectToDbSave
+        {
+            get { return _objectToDbSave; }
+            set { _objectToDbSave = value; }
+        }
         public DialogWindow()
         {
             InitializeComponent();
+            _objectToDbSave = new object();
         }
     }
 }

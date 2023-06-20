@@ -3,12 +3,15 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:EFCore_MPS.View"
+      xmlns:vm="clr-namespace:EFCore_MPS.ViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="550" d:DesignWidth="800"
       Title="RegisterMps"
       KeepAlive="True">
 
+    <Page.DataContext>
+        <vm:RegisterViewModel/>
+    </Page.DataContext>
     <Grid Background="#f1f3f5">
         <Grid.RowDefinitions>
             <RowDefinition Height="41*"/>
@@ -44,7 +47,7 @@
             <DataGrid Height="262" Margin="15" x:Name="RegisterMps_DataGrid" AutoGenerateColumns="True"/>
 
             <StackPanel Orientation="Vertical" Height="158">
-                <Button Name="CreateMPS" Height="52" Width="771" Style="{StaticResource ERP_Button}" Background="#FFB197FC" Margin="10">
+                <Button Name="CreateMPS" Height="52" Width="771" Style="{StaticResource ERP_Button}" Background="#FFB197FC" Margin="10" Command="{Binding OpenRegistrationWindowCommand}" CommandParameter="2">
                     <Button.Content>
                         <TextBlock Margin ="0,0,0,10" FontSize="24" Text="Создать электронную карту МПЗ" FontFamily="ubuntu" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                     </Button.Content>

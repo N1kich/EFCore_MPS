@@ -1,19 +1,15 @@
-﻿<UserControl x:Class="EFCore_MPS.View.CreateRegisterMps"
+﻿<UserControl x:Class="EFCore_MPS.DialogWindows.CreateRegisterMps"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:vm="clr-namespace:EFCore_MPS.ViewModel"
-             xmlns:local="clr-namespace:EFCore_MPS.View"
+             xmlns:local="clr-namespace:EFCore_MPS.DialogWindows"
              mc:Ignorable="d" 
              d:DesignHeight="666" d:DesignWidth="800">
-    <UserControl.DataContext>
-        <vm:CreateMpsViewModel/>
-    </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="19*"/>
-            <RowDefinition Height="102*"/>
+            <RowDefinition Height="85*"/>
+            <RowDefinition Height="581*"/>
         </Grid.RowDefinitions>
 
         <Border Grid.Row="0" CornerRadius="20" Background="#FFB197FC">

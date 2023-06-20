@@ -9,5 +9,6 @@ namespace EFCore_MPS.Core
     interface IDialogService
     {
         public void ShowDialog(string nameWindow, Action<string,object> callback);
+        void ShowDialog(string v);
     }
 }

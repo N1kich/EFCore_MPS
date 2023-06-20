@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace EFCore_MPS.ViewModel
 {
-    public class CreateMpsViewModel: ObservableObject
+    class CreateMpsViewModel: ObservableObject
     {
-        CreateMpsViewModel() 
+        public CreateMpsViewModel() 
         {
 
         }

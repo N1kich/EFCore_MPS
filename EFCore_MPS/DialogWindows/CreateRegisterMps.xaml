@@ -3,9 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:EFCore_MPS.DialogWindows"
+             xmlns:viewmodel="clr-namespace:EFCore_MPS.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="666" d:DesignWidth="800">
+             d:DesignHeight="666" d:DesignWidth="800"
+             >
+
+    <UserControl.DataContext>
+        <viewmodel:CreateMpsViewModel/>
+    </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="85*"/>
@@ -78,6 +83,7 @@
                 <ComboBox Name="Measurements_Box" Grid.Row="2" Grid.Column="1"
                          Background="White"
                          Margin="15,15,15,15"
+                         ItemsSource="{Binding UnitMeasurements}"
                            />
 
                 <Label Grid.Row="3" Grid.Column="0"
@@ -103,7 +109,7 @@
                 <ComboBox Name="Suppliers_Box" Grid.Row="4" Grid.Column="1"
                          Background="White"
                          Margin="15,15,15,15"
-                        
+                         ItemsSource="{Binding SupplierMps}"
                            />
 
                 <Label Grid.Row="5" Grid.Column="0"
@@ -129,7 +135,7 @@
                 <ComboBox Name="Type_Box" Grid.Row="6" Grid.Column="1"
                          Background="White"
                          Margin="15,15,15,15"
-                        
+                         ItemsSource="{Binding TypeMps}"
                            />
 
                 <Label Grid.Row="7" Grid.Column="0"

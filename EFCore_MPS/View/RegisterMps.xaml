@@ -44,7 +44,7 @@
 
         <StackPanel Grid.Row="1" Orientation="Vertical">
             
-            <DataGrid Height="262" Margin="15" x:Name="RegisterMps_DataGrid" AutoGenerateColumns="True"/>
+            <DataGrid Height="262" Margin="15" x:Name="RegisterMps_DataGrid" AutoGenerateColumns="True" ItemsSource="{Binding RegisterMps}"/>
 
             <StackPanel Orientation="Vertical" Height="158">
                 <Button Name="CreateMPS" Height="52" Width="771" Style="{StaticResource ERP_Button}" Background="#FFB197FC" Margin="10" Command="{Binding OpenRegistrationWindowCommand}" CommandParameter="2">

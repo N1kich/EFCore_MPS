@@ -5,6 +5,7 @@ namespace EFCore_MPS.Models;
 
 public partial class DefectListView
 {
+    
     public string? НаименованиеМпз { get; set; }
 
     public string? КодМпз { get; set; }

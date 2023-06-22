@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace EFCore_MPS.Models;
 
 public partial class DisposalList
 {
+    [Key]
     public int IdDisposal { get; set; }
 
     public int? IdDisposalReason { get; set; }

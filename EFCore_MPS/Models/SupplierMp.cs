@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace EFCore_MPS.Models;
 
 public partial class SupplierMp
 {
+    [Key]
     public int IdSupplier { get; set; }
 
     public string? NameCompany { get; set; }

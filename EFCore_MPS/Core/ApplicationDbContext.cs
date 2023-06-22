@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EFCore_MPS.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,14 +8,18 @@ using System.Threading.Tasks;
 
 namespace EFCore_MPS.Core
 {
-    class ApplicationDbContext: DbContext
+    public class ApplicationDbContext: DbContext
     {
-        private const string _connectionString = @"Data Source=DESKTOP-Q7UDDS1\SQLEXPRESS;Initial Catalog=mps;Integrated Security=True";
 
-        ApplicationDbContext()
-        {
-            
-        }
+        public DbSet<SupplierMp> Supplier { get; set; } = null;
+        public DbSet<UnitMeasurementsMp> UnitMeasurements { get; set; } = null;
+        public DbSet<TypeMp> TypeMps { get; set; } = null;
+
+        public DbSet<RegistrationMpsView> RegistrationMps { get; set; } = null;
+        private const string _connectionString = @"Server=DESKTOP-Q7UDDS1\SQLEXPRESS;Database=Mps";
+
+        public ApplicationDbContext() => Database.EnsureCreated();
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

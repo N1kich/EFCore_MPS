@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace EFCore_MPS.Models;
 
 public partial class Worker
 {
+    [Key]
     public int IdWorker { get; set; }
 
     public string? FullnameWorker { get; set; }

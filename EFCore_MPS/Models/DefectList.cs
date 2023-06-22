@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace EFCore_MPS.Models;
 
 public partial class DefectList
 {
+    [Key]
     public int IdDefectList { get; set; }
 
     public int? IdDefect { get; set; }

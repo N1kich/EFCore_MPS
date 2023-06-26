@@ -11,17 +11,16 @@ namespace EFCore_MPS.ViewModel
 {
     class RegisterViewModel:ObservableObject
     {
-        public RelayCommand<object> OpenRegistrationWindowCommand { get; set; }
+        public RelayCommand OpenRegistrationWindowCommand { get; set; }
         public RelayCommand<object> SaveChangesCommand { get; set; }
         IDialogService _dialogService = new DialogService();
         RegistrationMpsView _registrationMpsView;
-        string dialogResult;
         public ObservableCollection<RegistrationMpsView> RegisterMps { get; set; }
 
         public RegisterViewModel()
         {
             _registrationMpsView= new RegistrationMpsView();
-            OpenRegistrationWindowCommand = new RelayCommand<object>(ExecuteShowDialog);
+            OpenRegistrationWindowCommand = new RelayCommand(ExecuteShowDialog);
 
             using (var dbContext = new MpsContext())
             {
@@ -32,14 +31,20 @@ namespace EFCore_MPS.ViewModel
             
         }
 
-        void ExecuteShowDialog(Object obj)
+        void ExecuteShowDialog()
         {
             _dialogService.ShowDialog("CreateRegisterMps", (result,mpsToRegister) =>
             {
-                dialogResult = result.ToString();
-                if (dialogResult == "True")
+                
+                if (result.ToString() == "True")
                 {
-                    _registrationMpsView = (RegistrationMpsView)mpsToRegister;
+                    RegisterMps.Add((RegistrationMpsView)mpsToRegister);
+                    //using (var dbContext = new MpsContext())
+                    //{
+                    //    dbContext.RegistrationMpsViews.Add((RegistrationMpsView)mpsToRegister);
+                    //    RegisterMps.Add((RegistrationMpsView)mpsToRegister);
+                    //    dbContext.SaveChanges();
+                    //}
                 }
             });
         }

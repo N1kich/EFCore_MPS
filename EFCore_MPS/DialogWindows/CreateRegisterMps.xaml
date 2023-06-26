@@ -83,9 +83,8 @@
                 <ComboBox Name="Measurements_Box" Grid.Row="2" Grid.Column="1"
                          Background="White"
                          Margin="15,15,15,15"
-                         ItemsSource="{Binding UnitMeasurements}"
-                           />
-
+                         ItemsSource="{Binding UnitMeasurementsList}">
+       
                 <Label Grid.Row="3" Grid.Column="0"
                        Content="Стоимость за шт."
                        
@@ -109,8 +108,8 @@
                 <ComboBox Name="Suppliers_Box" Grid.Row="4" Grid.Column="1"
                          Background="White"
                          Margin="15,15,15,15"
-                         ItemsSource="{Binding SupplierMps}"
-                           />
+                         ItemsSource="{Binding SupplierMpsList}">
+                </ComboBox>
 
                 <Label Grid.Row="5" Grid.Column="0"
                        Content="Годен до"
@@ -135,8 +134,9 @@
                 <ComboBox Name="Type_Box" Grid.Row="6" Grid.Column="1"
                          Background="White"
                          Margin="15,15,15,15"
-                         ItemsSource="{Binding TypeMps}"
-                           />
+                         ItemsSource="{Binding TypeMpsList}">
+                                    
+                </ComboBox>
 
                 <Label Grid.Row="7" Grid.Column="0"
                        Content="Дата прихода"

@@ -10,10 +10,10 @@ namespace EFCore_MPS.Core
 
     internal class RelayCommand : ICommand
     {
-        private Action<object> _execute;
+        private Action _execute;
         private Func<object, bool> _canExecute;
 
-        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
+        public RelayCommand(Action execute, Func<object, bool> canExecute = null)
         {
             _execute = execute;
             _canExecute = canExecute;
@@ -31,7 +31,7 @@ namespace EFCore_MPS.Core
 
         public void Execute(object parameter)
         {
-            _execute(parameter);
+            _execute();
         }
     }
 

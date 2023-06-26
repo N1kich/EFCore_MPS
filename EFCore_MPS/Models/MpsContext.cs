@@ -364,8 +364,10 @@ public partial class MpsContext : DbContext
         modelBuilder.Entity<RegistrationMpsView>(entity =>
         {
             entity
-                .HasNoKey()
-                .ToView("RegistrationMpsView");
+                .ToView("RegistrationMpsView")
+                .ToTable(tb => tb.HasTrigger("CreateNewMpsObject"))
+                .ToTable("RegistrationMpsView");
+
 
             entity.Property(e => e.ArrivalDate).HasColumnType("date");
             entity.Property(e => e.CodeMps)

@@ -10,22 +10,23 @@ namespace EFCore_MPS.ViewModel
 {
     class CreateMpsViewModel: ObservableObject
     {
-        public List<SupplierMp> SupplierMps;
-        public List<UnitMeasurementsMp> UnitMeasurements;
-        public List<TypeMp> TypeMps;
+        public List<string> SupplierMpsList { get; set; }
+        public List<string> UnitMeasurementsList { get; set; }
+        public List<string> TypeMpsList { get; set; }
 
-        RelayCommand<object>? CreateNewMpsCommand;
         public CreateMpsViewModel() 
         {
-            SupplierMps= new List<SupplierMp>();
-            UnitMeasurements= new List<UnitMeasurementsMp>();
-            TypeMps= new List<TypeMp>();
+            
             using (var dbContext = new MpsContext())
             {
-                SupplierMps = dbContext.SupplierMps.ToList();
-                UnitMeasurements= dbContext.UnitMeasurementsMps.ToList();
-                TypeMps= dbContext.TypeMps.ToList();
+                SupplierMpsList = dbContext.SupplierMps.Select(supplier => supplier.NameCompany).ToList();
+                UnitMeasurementsList = dbContext.UnitMeasurementsMps.Select(measurements => measurements.NameMeasurements).ToList();
+                TypeMpsList = dbContext.TypeMps.Select(typeMps => typeMps.TypeMps).ToList();
+
+
             }
         }
+
+        
     }
 }

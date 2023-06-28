@@ -363,6 +363,8 @@ public partial class MpsContext : DbContext
 
         modelBuilder.Entity<RegistrationMpsView>(entity =>
         {
+
+            
             entity
                 .ToView("RegistrationMpsView")
                 .ToTable(tb => tb.HasTrigger("CreateNewMpsObject"))

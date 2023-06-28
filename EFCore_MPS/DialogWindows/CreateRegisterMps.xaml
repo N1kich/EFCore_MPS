@@ -83,8 +83,8 @@
                 <ComboBox Name="Measurements_Box" Grid.Row="2" Grid.Column="1"
                          Background="White"
                          Margin="15,15,15,15"
-                         ItemsSource="{Binding UnitMeasurementsList}">
-       
+                         ItemsSource="{Binding UnitMeasurementsList}"/>
+
                 <Label Grid.Row="3" Grid.Column="0"
                        Content="Стоимость за шт."
                        

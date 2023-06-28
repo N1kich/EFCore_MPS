@@ -1,4 +1,5 @@
 ﻿using EFCore_MPS.Core;
+using EFCore_MPS.Models;
 using EFCore_MPS.View;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,6 @@ namespace EFCore_MPS.ViewModel
         public MainViewModel() 
         {
             ContentNavigationCommand = new RelayCommand<string>(SwitchPage);
-            
         }
 
         private void SwitchPage(string pageName)

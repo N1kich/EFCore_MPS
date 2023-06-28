@@ -38,13 +38,14 @@ namespace EFCore_MPS.DialogWindows
             var window = this.Parent as DialogWindow;
             _mpsToCreate.Name = Name_MPS.Text;
             _mpsToCreate.CodeMps = Code_MPS.Text;
-            _mpsToCreate.MeasureType = Measurements_Box.Selected
+            _mpsToCreate.MeasureType = Measurements_Box.SelectedItem.ToString();
             _mpsToCreate.PricePerUnit = Int32.Parse(PricePerUnit_MPS.Text);
-            _mpsToCreate.Supplier = Suppliers_Box.Text;
+            _mpsToCreate.Supplier = Suppliers_Box.SelectedItem.ToString();
             _mpsToCreate.ExpireDate = ExpireDate_Picker.DisplayDate;
-            _mpsToCreate.MpsType = Type_Box.Text;
+            _mpsToCreate.MpsType = Type_Box.SelectedItem.ToString() ;
             _mpsToCreate.ArrivalDate = ArrivalDate_MPS.DisplayDate;
             _mpsToCreate.Quantity = Int32.Parse(Amount_MPS.Text);
+            _mpsToCreate.TotalCost = _mpsToCreate.PricePerUnit * _mpsToCreate.Quantity;
             window.ObjectToDbSave = MpsToCreate;
             window.DialogResult = true;
             

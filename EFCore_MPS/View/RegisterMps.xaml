@@ -46,19 +46,49 @@
 
         <StackPanel Grid.Row="1" Orientation="Vertical">
 
-            <DataGrid Height="334" Margin="10" ItemsSource="{Binding RegisterMps}">
+            <DataGrid Height="334" Margin="10" ItemsSource="{Binding RegisterMps}" AutoGenerateColumns="False" CanUserAddRows="False" x:Name="MpsDataGrid" >
 
                 <DataGrid.Columns>
+                    
                     <DataGridTextColumn Header="Ид МПЗ" Binding="{Binding IdMps}"/>
                     <DataGridTextColumn Header="Наименование МПЗ" Binding="{Binding Name}"/>
                     <DataGridTextColumn Header="Код МПЗ" Binding="{Binding CodeMps}"/>
-                    <DataGridComboBoxColumn Header="Тип МПЗ" ItemsSource=""
+
+                    <DataGridTemplateColumn Header="Тип Мпз">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <ItemContainerTemplate>
+                                <ComboBox ItemsSource="{Binding Path=DataContext.MpsTypeList, ElementName=MpsDataGrid }" SelectedValue="{Binding MpsType}"/>
+                            </ItemContainerTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <ItemContainerTemplate>
+                                <ComboBox ItemsSource="{Binding Path=DataContext.MpsMeasureList, ElementName=MpsDataGrid }" SelectedValue="{Binding MeasureType}"/>
+                            </ItemContainerTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTextColumn Header="Стоимость за ед." Binding="{Binding PricePerUnit}"/>
+
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <ItemContainerTemplate>
+                                <ComboBox ItemsSource="{Binding Path=DataContext.SupplierList, ElementName=MpsDataGrid }" SelectedValue="{Binding Supplier}"/>
+                            </ItemContainerTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTextColumn Header="Годен до" Binding="{Binding ExpireDate}"/>
+                    <DataGridTextColumn Header="Кол-во" Binding="{Binding Quantity}"/>
+                    <DataGridTextColumn Header="Дата приемки" Binding="{Binding ArrivalDate}"/>
+                    <DataGridTextColumn Header="Итоговая стоимость" Binding="{Binding TotalCost}"/>
+
                 </DataGrid.Columns>
                 
             </DataGrid>
             
-            <!--<DataGrid Height="262" Margin="15" x:Name="RegisterMps_DataGrid" AutoGenerateColumns="True" ItemsSource="{Binding RegisterMps}"/>-->
-
             <StackPanel Orientation="Vertical" Height="158">
                 <Button Name="CreateMPS" Height="52" Width="771" Style="{StaticResource ERP_Button}" Background="#FFB197FC" Margin="10" Command="{Binding OpenRegistrationWindowCommand}" CommandParameter="2">
                     <Button.Content>

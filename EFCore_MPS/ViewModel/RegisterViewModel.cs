@@ -19,8 +19,11 @@ namespace EFCore_MPS.ViewModel
 
         IDialogService _dialogService = new DialogService();
 
-        public List<string> mpsTypeList { get; set; }
+        public List<string> MpsTypeList { get; set; }
         
+        public List<string> MpsMeasureList { get; set; }
+        public List<string> SupplierList { get; set; }
+
         RegistrationMpsView _selectedMps;
 
         string _mpsToFind;
@@ -47,7 +50,9 @@ namespace EFCore_MPS.ViewModel
             using (var dbContext = new MpsContext())
             {
                 _registerMps = new ObservableCollection<RegistrationMpsView>(dbContext.RegistrationMpsViews.ToList());
-
+                MpsTypeList = dbContext.TypeMps.Select(x => x.TypeMps).ToList();
+                MpsMeasureList = dbContext.UnitMeasurementsMps.Select(x => x.NameMeasurements).ToList();
+                SupplierList = dbContext.SupplierMps.Select(x => x.NameCompany).ToList();
             }
 
         }

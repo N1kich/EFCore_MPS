@@ -13,7 +13,7 @@ namespace EFCore_MPS.ViewModel
     class RegisterViewModel:ObservableObject
     {
         public RelayCommand OpenRegistrationWindowCommand { get; set; }
-        public RelayCommand<object> SaveChangesCommand { get; set; }
+        public RelayCommand UpdateMpsCommand { get; set; }
 
         public RelayCommand SearchMpsCommand { get; set; }
 
@@ -25,6 +25,11 @@ namespace EFCore_MPS.ViewModel
         public List<string> SupplierList { get; set; }
 
         RegistrationMpsView _selectedMps;
+        public RegistrationMpsView SelectedMps
+        {
+            get { return _selectedMps; }
+            set { _selectedMps = value; OnPropertyChanged(); }
+        }
 
         string _mpsToFind;
         public string MpsToFind
@@ -46,6 +51,7 @@ namespace EFCore_MPS.ViewModel
 
             OpenRegistrationWindowCommand = new RelayCommand(ExecuteShowDialog);
             SearchMpsCommand = new RelayCommand(SearchMps);
+            UpdateMpsCommand = new RelayCommand(UpdateSelectedMps);
 
             using (var dbContext = new MpsContext())
             {
@@ -91,7 +97,15 @@ namespace EFCore_MPS.ViewModel
             
             _registerMps = new ObservableCollection<RegistrationMpsView>(foundMps);
 
-            
+        }
+
+        void UpdateSelectedMps()
+        {
+            using (var dbContext = new MpsContext())
+            {
+                dbContext.Update(_selectedMps);
+                dbContext.SaveChanges();
+            }
         }
 
     }

@@ -24,7 +24,7 @@
                         />
             <StackPanel Orientation="Horizontal" Height="51">
                 <TextBox Name="SearchMPS_Text" Width="524" FontFamily="Cascadia Mono Semibold" FontSize="18" Height="35"
-                         Text="{Binding MpsToFind}"/>
+                         Text="{Binding MpsToFind, Mode=TwoWay}"/>
                 <Button x:Name="SearchMPS"
                         Background="#FFB197FC"
                         Style="{StaticResource ERP_Button}"
@@ -46,7 +46,7 @@
 
         <StackPanel Grid.Row="1" Orientation="Vertical">
 
-            <DataGrid Height="334" Margin="10" ItemsSource="{Binding RegisterMps}" AutoGenerateColumns="False" CanUserAddRows="False" x:Name="MpsDataGrid" >
+            <DataGrid Height="334" Margin="10" ItemsSource="{Binding RegisterMps,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False" x:Name="MpsDataGrid" SelectedItem="{Binding SelectedMps, Mode=OneWayToSource}">
 
                 <DataGrid.Columns>
                     
@@ -95,7 +95,7 @@
                         <TextBlock Margin ="0,0,0,10" FontSize="24" Text="Создать электронную карту МПЗ" FontFamily="ubuntu" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                     </Button.Content>
                 </Button>
-                <Button Name="LoadToDb" Height="52" Width="771" Style="{StaticResource ERP_Button}" Background="#FFB197FC">
+                <Button Name="LoadToDb" Height="52" Width="771" Style="{StaticResource ERP_Button}" Background="#FFB197FC" Command="{Binding UpdateMpsCommand}">
                     <Button.Content>
                         <TextBlock Margin ="0,0,0,10" FontSize="24" Text="Сохранить электронную карту в БД" FontFamily="ubuntu" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                     </Button.Content>

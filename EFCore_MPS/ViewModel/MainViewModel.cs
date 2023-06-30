@@ -13,7 +13,6 @@ namespace EFCore_MPS.ViewModel
     class MainViewModel:ObservableObject
     {
         public RelayCommand<string> ContentNavigationCommand { get; set; }
-        public Page ContentPage { get; set; }
 
         private Uri _contentUri;
         public Uri ContentUri { get { return _contentUri; } set { _contentUri = value; OnPropertyChanged(); } }
@@ -21,7 +20,10 @@ namespace EFCore_MPS.ViewModel
         {
             ContentNavigationCommand = new RelayCommand<string>(SwitchPage);
         }
-
+        /// <summary>
+        /// method to switch pages in frameUI
+        /// </summary>
+        /// <param name="pageName"></param>
         private void SwitchPage(string pageName)
         {
             switch (pageName)

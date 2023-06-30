@@ -59,6 +59,9 @@ namespace EFCore_MPS.ViewModel
 
         }
 
+        /// <summary>
+        /// Execute dialogWindow, and handle dialog results
+        /// </summary>
         void ExecuteShowDialog()
         {
             _dialogService.ShowDialog("CreateRegisterMps", (result,mpsToRegister) =>
@@ -71,7 +74,9 @@ namespace EFCore_MPS.ViewModel
             });
         }
 
-
+        /// <summary>
+        /// Initialize dataCollection from DB
+        /// </summary>
         void InitialiazeDataCollections()
         {
             using (var dbContext = new MpsContext())
@@ -82,7 +87,10 @@ namespace EFCore_MPS.ViewModel
                 SupplierList = dbContext.SupplierMps.Select(x => x.NameCompany).ToList();
             }
         }
-
+        /// <summary>
+        /// add new mps record to DB and observable collection
+        /// </summary>
+        /// <param name="mpsToRegister"></param>
         void AddNewMps(RegistrationMpsView mpsToRegister)
         {
             using (var dbContext = new MpsContext())
@@ -96,19 +104,26 @@ namespace EFCore_MPS.ViewModel
             }
         }
 
-        // To prevent ConcurrencyException increment mps_id manually
+        /// <summary>
+        /// To prevent ConcurrencyException increment mps_id manually
+        /// </summary>
+        /// <param name="newMps"></param>
         void IncrementMpsId(RegistrationMpsView newMps)
         {
             newMps.IdMps = ++_registeredMps.Last().IdMps;
         }
-
+        /// <summary>
+        /// Display all mps
+        /// </summary>
         void DisplayAllMps()
         {
             _registeredMps.Clear();
             AddDataFromDbToCollection();
         }
 
-
+        /// <summary>
+        /// Add data from DBSet to ObservableCollection
+        /// </summary>
         void AddDataFromDbToCollection()
         {
             using (var dbContext = new MpsContext())
@@ -119,6 +134,10 @@ namespace EFCore_MPS.ViewModel
                 }
             }
         }
+
+        /// <summary>
+        /// Search mps by code
+        /// </summary>
         void SearchMps()
         {
             var foundMps = _registeredMps.FirstOrDefault(x => x.CodeMps == _mpsCodeToFind);
@@ -127,7 +146,9 @@ namespace EFCore_MPS.ViewModel
             _registeredMps.Add(foundMps);
 
         }
-
+        /// <summary>
+        /// Update modified mps object to DB
+        /// </summary>
         void UpdateSelectedMps()
         {
             using (var dbContext = new MpsContext())

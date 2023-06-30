@@ -7,7 +7,9 @@ using System.Windows.Input;
 
 namespace EFCore_MPS.Core
 {
-
+    /// <summary>
+    /// class to implement base command functionality
+    /// </summary>
     internal class RelayCommand : ICommand
     {
         private Action _execute;

@@ -10,7 +10,11 @@ namespace EFCore_MPS.Core
     class DialogService : IDialogService
     {
        
-
+        /// <summary>
+        /// Represents functionality to open dialog window with different xaml-markup
+        /// </summary>
+        /// <param name="nameWindow"></param>
+        /// <param name="callback"></param>
         public void ShowDialog(string nameWindow, Action<string, object> callback)
         {
             var dialog = new DialogWindow();

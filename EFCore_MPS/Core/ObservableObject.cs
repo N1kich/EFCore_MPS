@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace EFCore_MPS.Core
 {
+    /// <summary>
+    /// Base class to implement mvvm logic
+    /// </summary>
     public class ObservableObject: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;

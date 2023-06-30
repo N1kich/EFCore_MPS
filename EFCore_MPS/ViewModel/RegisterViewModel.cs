@@ -53,6 +53,7 @@ namespace EFCore_MPS.ViewModel
             OpenRegistrationWindowCommand = new RelayCommand(ExecuteShowDialog);
             SearchMpsCommand = new RelayCommand(SearchMps);
             UpdateMpsCommand = new RelayCommand(UpdateSelectedMps);
+            DisplayAllMpsCommand = new RelayCommand(DisplayAllMps);
 
             InitialiazeDataCollections();
 
@@ -103,9 +104,21 @@ namespace EFCore_MPS.ViewModel
 
         void DisplayAllMps()
         {
-
+            _registeredMps.Clear();
+            AddDataFromDbToCollection();
         }
 
+
+        void AddDataFromDbToCollection()
+        {
+            using (var dbContext = new MpsContext())
+            {
+                foreach (var item in dbContext.RegistrationMpsViews)
+                {
+                    _registeredMps.Add(item);
+                }
+            }
+        }
         void SearchMps()
         {
             var foundMps = _registeredMps.FirstOrDefault(x => x.CodeMps == _mpsCodeToFind);

@@ -24,7 +24,7 @@
                         />
             <StackPanel Orientation="Horizontal" Height="51">
                 <TextBox Name="SearchMPS_Text" Width="524" FontFamily="Cascadia Mono Semibold" FontSize="18" Height="35"
-                         Text="{Binding MpsToFind, Mode=TwoWay}"/>
+                         Text="{Binding MpsCodeToFind}"/>
                 <Button x:Name="SearchMPS"
                         Background="#FFB197FC"
                         Style="{StaticResource ERP_Button}"
@@ -46,7 +46,7 @@
 
         <StackPanel Grid.Row="1" Orientation="Vertical">
 
-            <DataGrid Height="334" Margin="10" ItemsSource="{Binding RegisterMps,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False" x:Name="MpsDataGrid" SelectedItem="{Binding SelectedMps, Mode=OneWayToSource}">
+            <DataGrid Height="334" Margin="10" ItemsSource="{Binding RegisteredMps,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False" x:Name="MpsDataGrid" SelectedItem="{Binding SelectedMps, Mode=OneWayToSource}">
 
                 <DataGrid.Columns>
                     

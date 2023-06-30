@@ -17,6 +17,8 @@ namespace EFCore_MPS.ViewModel
 
         public RelayCommand SearchMpsCommand { get; set; }
 
+        public RelayCommand DisplayAllMpsCommand { get; set; }
+
         readonly IDialogService _dialogService = new DialogService();
 
         public List<string> MpsTypeList { get; set; }
@@ -31,11 +33,11 @@ namespace EFCore_MPS.ViewModel
             set { _selectedMps = value; OnPropertyChanged(); }
         }
 
-        string _mpsToFind;
-        public string MpsToFind
+        string _mpsCodeToFind;
+        public string MpsCodeToFind
         {
-            get { return _mpsToFind; }
-            set { _mpsToFind = value; OnPropertyChanged(); }
+            get { return _mpsCodeToFind; }
+            set { _mpsCodeToFind = value; OnPropertyChanged(); }
         }
 
         ObservableCollection<RegistrationMpsView> _registeredMps;
@@ -99,11 +101,17 @@ namespace EFCore_MPS.ViewModel
             newMps.IdMps = ++_registeredMps.Last().IdMps;
         }
 
+        void DisplayAllMps()
+        {
+
+        }
+
         void SearchMps()
         {
-            var foundMps = _registeredMps.Where(x => x.CodeMps == _mpsToFind).ToList();
-            
-            _registeredMps = new ObservableCollection<RegistrationMpsView>(foundMps);
+            var foundMps = _registeredMps.FirstOrDefault(x => x.CodeMps == _mpsCodeToFind);
+
+            _registeredMps.Clear();
+            _registeredMps.Add(foundMps);
 
         }
 

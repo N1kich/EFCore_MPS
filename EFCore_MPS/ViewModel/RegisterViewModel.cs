@@ -17,7 +17,7 @@ namespace EFCore_MPS.ViewModel
 
         public RelayCommand SearchMpsCommand { get; set; }
 
-        IDialogService _dialogService = new DialogService();
+        readonly IDialogService _dialogService = new DialogService();
 
         public List<string> MpsTypeList { get; set; }
         
@@ -38,28 +38,21 @@ namespace EFCore_MPS.ViewModel
             set { _mpsToFind = value; OnPropertyChanged(); }
         }
 
-        ObservableCollection<RegistrationMpsView> _registerMps;
-        public ObservableCollection<RegistrationMpsView> RegisterMps
+        ObservableCollection<RegistrationMpsView> _registeredMps;
+        public ObservableCollection<RegistrationMpsView> RegisteredMps
         {
-            get { return _registerMps; }
-            set { _registerMps = value; OnPropertyChanged(); }
+            get { return _registeredMps; }
+            set { _registeredMps = value; OnPropertyChanged(); }
         }
 
         public RegisterViewModel()
         {
-            _selectedMps= new RegistrationMpsView();
-
+            
             OpenRegistrationWindowCommand = new RelayCommand(ExecuteShowDialog);
             SearchMpsCommand = new RelayCommand(SearchMps);
             UpdateMpsCommand = new RelayCommand(UpdateSelectedMps);
 
-            using (var dbContext = new MpsContext())
-            {
-                _registerMps = new ObservableCollection<RegistrationMpsView>(dbContext.RegistrationMpsViews.ToList());
-                MpsTypeList = dbContext.TypeMps.Select(x => x.TypeMps).ToList();
-                MpsMeasureList = dbContext.UnitMeasurementsMps.Select(x => x.NameMeasurements).ToList();
-                SupplierList = dbContext.SupplierMps.Select(x => x.NameCompany).ToList();
-            }
+            InitialiazeDataCollections();
 
         }
 
@@ -70,32 +63,47 @@ namespace EFCore_MPS.ViewModel
                 
                 if (result.ToString() == "True")
                 {
-                    
-                    using (var dbContext = new MpsContext())
-                    {
-                        IncrementMpsId((RegistrationMpsView)mpsToRegister);
-
-                        dbContext.RegistrationMpsViews.Add((RegistrationMpsView)mpsToRegister);
-                        dbContext.SaveChanges();
-
-                        _registerMps.Add(dbContext.RegistrationMpsViews.OrderBy(x => x.IdMps).Last());
-                    }
+                    AddNewMps((RegistrationMpsView)mpsToRegister);                    
                 }
             });
         }
 
 
+        void InitialiazeDataCollections()
+        {
+            using (var dbContext = new MpsContext())
+            {
+                _registeredMps = new ObservableCollection<RegistrationMpsView>(dbContext.RegistrationMpsViews.ToList());
+                MpsTypeList = dbContext.TypeMps.Select(x => x.TypeMps).ToList();
+                MpsMeasureList = dbContext.UnitMeasurementsMps.Select(x => x.NameMeasurements).ToList();
+                SupplierList = dbContext.SupplierMps.Select(x => x.NameCompany).ToList();
+            }
+        }
+
+        void AddNewMps(RegistrationMpsView mpsToRegister)
+        {
+            using (var dbContext = new MpsContext())
+            {
+                IncrementMpsId(mpsToRegister);
+
+                dbContext.RegistrationMpsViews.Add(mpsToRegister);
+                dbContext.SaveChanges();
+
+                _registeredMps.Add(dbContext.RegistrationMpsViews.OrderBy(x => x.IdMps).Last());
+            }
+        }
+
         // To prevent ConcurrencyException increment mps_id manually
         void IncrementMpsId(RegistrationMpsView newMps)
         {
-            newMps.IdMps = ++_registerMps.Last().IdMps;
+            newMps.IdMps = ++_registeredMps.Last().IdMps;
         }
 
         void SearchMps()
         {
-            var foundMps = _registerMps.Where(x => x.CodeMps == _mpsToFind).ToList();
+            var foundMps = _registeredMps.Where(x => x.CodeMps == _mpsToFind).ToList();
             
-            _registerMps = new ObservableCollection<RegistrationMpsView>(foundMps);
+            _registeredMps = new ObservableCollection<RegistrationMpsView>(foundMps);
 
         }
 
